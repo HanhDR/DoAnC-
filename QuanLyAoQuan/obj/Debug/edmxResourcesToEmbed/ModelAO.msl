@@ -1,0 +1,96 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="QLAQModelStoreContainer" CdmEntityContainer="QLAQEntities">
+    <EntitySetMapping Name="C_Admin">
+      <EntityTypeMapping TypeName="QLAQModel.C_Admin">
+        <MappingFragment StoreEntitySet="_Admin">
+          <ScalarProperty Name="tendn" ColumnName="tendn" />
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="pass" ColumnName="pass" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CTBanHangs">
+      <EntityTypeMapping TypeName="QLAQModel.CTBanHang">
+        <MappingFragment StoreEntitySet="CTBanHang">
+          <ScalarProperty Name="mactbh" ColumnName="mactbh" />
+          <ScalarProperty Name="masp" ColumnName="masp" />
+          <ScalarProperty Name="mahd" ColumnName="mahd" />
+          <ScalarProperty Name="soluong" ColumnName="soluong" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CTMuaHangs">
+      <EntityTypeMapping TypeName="QLAQModel.CTMuaHang">
+        <MappingFragment StoreEntitySet="CTMuaHang">
+          <ScalarProperty Name="mactmh" ColumnName="mactmh" />
+          <ScalarProperty Name="masp" ColumnName="masp" />
+          <ScalarProperty Name="mahd" ColumnName="mahd" />
+          <ScalarProperty Name="gia" ColumnName="gia" />
+          <ScalarProperty Name="soluong" ColumnName="soluong" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="HoaDonBHs">
+      <EntityTypeMapping TypeName="QLAQModel.HoaDonBH">
+        <MappingFragment StoreEntitySet="HoaDonBH">
+          <ScalarProperty Name="mahd" ColumnName="mahd" />
+          <ScalarProperty Name="makh" ColumnName="makh" />
+          <ScalarProperty Name="ngaymua" ColumnName="ngaymua" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="HoaDonMHs">
+      <EntityTypeMapping TypeName="QLAQModel.HoaDonMH">
+        <MappingFragment StoreEntitySet="HoaDonMH">
+          <ScalarProperty Name="mahd" ColumnName="mahd" />
+          <ScalarProperty Name="ngaymua" ColumnName="ngaymua" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="KhachHangs">
+      <EntityTypeMapping TypeName="QLAQModel.KhachHang">
+        <MappingFragment StoreEntitySet="KhachHang">
+          <ScalarProperty Name="makh" ColumnName="makh" />
+          <ScalarProperty Name="tenkh" ColumnName="tenkh" />
+          <ScalarProperty Name="sdt" ColumnName="sdt" />
+          <ScalarProperty Name="diachi" ColumnName="diachi" />
+          <ScalarProperty Name="email" ColumnName="email" />
+          <ScalarProperty Name="tendn" ColumnName="tendn" />
+          <ScalarProperty Name="pass" ColumnName="pass" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Loais">
+      <EntityTypeMapping TypeName="QLAQModel.Loai">
+        <MappingFragment StoreEntitySet="Loai">
+          <ScalarProperty Name="maloai" ColumnName="maloai" />
+          <ScalarProperty Name="tenloai" ColumnName="tenloai" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SanPhams">
+      <EntityTypeMapping TypeName="QLAQModel.SanPham">
+        <MappingFragment StoreEntitySet="SanPham">
+          <ScalarProperty Name="masp" ColumnName="masp" />
+          <ScalarProperty Name="tensp" ColumnName="tensp" />
+          <ScalarProperty Name="tonkho" ColumnName="tonkho" />
+          <ScalarProperty Name="gia" ColumnName="gia" />
+          <ScalarProperty Name="maloai" ColumnName="maloai" />
+          <ScalarProperty Name="anh" ColumnName="anh" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="sysdiagrams">
+      <EntityTypeMapping TypeName="QLAQModel.sysdiagram">
+        <MappingFragment StoreEntitySet="sysdiagrams">
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+          <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+          <ScalarProperty Name="version" ColumnName="version" />
+          <ScalarProperty Name="definition" ColumnName="definition" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

@@ -1,0 +1,522 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="QLAQModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="_Admin">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="tendn" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="pass" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="CTBanHang">
+          <Key>
+            <PropertyRef Name="mactbh" />
+          </Key>
+          <Property Name="mactbh" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="masp" Type="bigint" Nullable="false" />
+          <Property Name="mahd" Type="bigint" Nullable="false" />
+          <Property Name="soluong" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="CTMuaHang">
+          <Key>
+            <PropertyRef Name="mactmh" />
+          </Key>
+          <Property Name="mactmh" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="masp" Type="bigint" Nullable="false" />
+          <Property Name="mahd" Type="bigint" Nullable="false" />
+          <Property Name="gia" Type="bigint" Nullable="false" />
+          <Property Name="soluong" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="HoaDonBH">
+          <Key>
+            <PropertyRef Name="mahd" />
+          </Key>
+          <Property Name="mahd" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="makh" Type="bigint" Nullable="false" />
+          <Property Name="ngaymua" Type="date" Nullable="false" />
+        </EntityType>
+        <EntityType Name="HoaDonMH">
+          <Key>
+            <PropertyRef Name="mahd" />
+          </Key>
+          <Property Name="mahd" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ngaymua" Type="date" />
+        </EntityType>
+        <EntityType Name="KhachHang">
+          <Key>
+            <PropertyRef Name="makh" />
+          </Key>
+          <Property Name="makh" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="tenkh" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="sdt" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="diachi" Type="nvarchar" MaxLength="50" />
+          <Property Name="email" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="tendn" Type="nvarchar" MaxLength="50" />
+          <Property Name="pass" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Loai">
+          <Key>
+            <PropertyRef Name="maloai" />
+          </Key>
+          <Property Name="maloai" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="tenloai" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="SanPham">
+          <Key>
+            <PropertyRef Name="masp" />
+          </Key>
+          <Property Name="masp" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="tensp" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="tonkho" Type="int" Nullable="false" />
+          <Property Name="gia" Type="bigint" Nullable="false" />
+          <Property Name="maloai" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="anh" Type="nvarchar" MaxLength="255" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
+        </EntityType>
+        <Association Name="FK_CTHD_HoaDon">
+          <End Role="HoaDonBH" Type="Self.HoaDonBH" Multiplicity="1" />
+          <End Role="CTBanHang" Type="Self.CTBanHang" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="HoaDonBH">
+              <PropertyRef Name="mahd" />
+            </Principal>
+            <Dependent Role="CTBanHang">
+              <PropertyRef Name="mahd" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CTHD_SanPham">
+          <End Role="SanPham" Type="Self.SanPham" Multiplicity="1" />
+          <End Role="CTBanHang" Type="Self.CTBanHang" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SanPham">
+              <PropertyRef Name="masp" />
+            </Principal>
+            <Dependent Role="CTBanHang">
+              <PropertyRef Name="masp" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CTMuaHang_HoaDonMH">
+          <End Role="HoaDonMH" Type="Self.HoaDonMH" Multiplicity="1" />
+          <End Role="CTMuaHang" Type="Self.CTMuaHang" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="HoaDonMH">
+              <PropertyRef Name="mahd" />
+            </Principal>
+            <Dependent Role="CTMuaHang">
+              <PropertyRef Name="mahd" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CTMuaHang_SanPham">
+          <End Role="SanPham" Type="Self.SanPham" Multiplicity="1" />
+          <End Role="CTMuaHang" Type="Self.CTMuaHang" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SanPham">
+              <PropertyRef Name="masp" />
+            </Principal>
+            <Dependent Role="CTMuaHang">
+              <PropertyRef Name="masp" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_HoaDon_KhachHang">
+          <End Role="KhachHang" Type="Self.KhachHang" Multiplicity="1" />
+          <End Role="HoaDonBH" Type="Self.HoaDonBH" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="KhachHang">
+              <PropertyRef Name="makh" />
+            </Principal>
+            <Dependent Role="HoaDonBH">
+              <PropertyRef Name="makh" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SanPham_Loai">
+          <End Role="Loai" Type="Self.Loai" Multiplicity="1" />
+          <End Role="SanPham" Type="Self.SanPham" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Loai">
+              <PropertyRef Name="maloai" />
+            </Principal>
+            <Dependent Role="SanPham">
+              <PropertyRef Name="maloai" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="QLAQModelStoreContainer">
+          <EntitySet Name="_Admin" EntityType="Self._Admin" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CTBanHang" EntityType="Self.CTBanHang" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CTMuaHang" EntityType="Self.CTMuaHang" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="HoaDonBH" EntityType="Self.HoaDonBH" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="HoaDonMH" EntityType="Self.HoaDonMH" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="KhachHang" EntityType="Self.KhachHang" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Loai" EntityType="Self.Loai" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SanPham" EntityType="Self.SanPham" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_CTHD_HoaDon" Association="Self.FK_CTHD_HoaDon">
+            <End Role="HoaDonBH" EntitySet="HoaDonBH" />
+            <End Role="CTBanHang" EntitySet="CTBanHang" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CTHD_SanPham" Association="Self.FK_CTHD_SanPham">
+            <End Role="SanPham" EntitySet="SanPham" />
+            <End Role="CTBanHang" EntitySet="CTBanHang" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CTMuaHang_HoaDonMH" Association="Self.FK_CTMuaHang_HoaDonMH">
+            <End Role="HoaDonMH" EntitySet="HoaDonMH" />
+            <End Role="CTMuaHang" EntitySet="CTMuaHang" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CTMuaHang_SanPham" Association="Self.FK_CTMuaHang_SanPham">
+            <End Role="SanPham" EntitySet="SanPham" />
+            <End Role="CTMuaHang" EntitySet="CTMuaHang" />
+          </AssociationSet>
+          <AssociationSet Name="FK_HoaDon_KhachHang" Association="Self.FK_HoaDon_KhachHang">
+            <End Role="KhachHang" EntitySet="KhachHang" />
+            <End Role="HoaDonBH" EntitySet="HoaDonBH" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SanPham_Loai" Association="Self.FK_SanPham_Loai">
+            <End Role="Loai" EntitySet="Loai" />
+            <End Role="SanPham" EntitySet="SanPham" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="QLAQModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="C_Admin">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="tendn" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="pass" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+        </EntityType>
+        <EntityType Name="CTBanHang">
+          <Key>
+            <PropertyRef Name="mactbh" />
+          </Key>
+          <Property Name="mactbh" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="masp" Type="Int64" Nullable="false" />
+          <Property Name="mahd" Type="Int64" Nullable="false" />
+          <Property Name="soluong" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="HoaDonBH" Relationship="Self.FK_CTHD_HoaDon" FromRole="CTBanHang" ToRole="HoaDonBH" />
+          <NavigationProperty Name="SanPham" Relationship="Self.FK_CTHD_SanPham" FromRole="CTBanHang" ToRole="SanPham" />
+        </EntityType>
+        <EntityType Name="CTMuaHang">
+          <Key>
+            <PropertyRef Name="mactmh" />
+          </Key>
+          <Property Name="mactmh" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="masp" Type="Int64" Nullable="false" />
+          <Property Name="mahd" Type="Int64" Nullable="false" />
+          <Property Name="gia" Type="Int64" Nullable="false" />
+          <Property Name="soluong" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="HoaDonMH" Relationship="Self.FK_CTMuaHang_HoaDonMH" FromRole="CTMuaHang" ToRole="HoaDonMH" />
+          <NavigationProperty Name="SanPham" Relationship="Self.FK_CTMuaHang_SanPham" FromRole="CTMuaHang" ToRole="SanPham" />
+        </EntityType>
+        <EntityType Name="HoaDonBH">
+          <Key>
+            <PropertyRef Name="mahd" />
+          </Key>
+          <Property Name="mahd" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="makh" Type="Int64" Nullable="false" />
+          <Property Name="ngaymua" Type="DateTime" Nullable="false" Precision="0" />
+          <NavigationProperty Name="CTBanHangs" Relationship="Self.FK_CTHD_HoaDon" FromRole="HoaDonBH" ToRole="CTBanHang" />
+          <NavigationProperty Name="KhachHang" Relationship="Self.FK_HoaDon_KhachHang" FromRole="HoaDonBH" ToRole="KhachHang" />
+        </EntityType>
+        <EntityType Name="HoaDonMH">
+          <Key>
+            <PropertyRef Name="mahd" />
+          </Key>
+          <Property Name="mahd" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ngaymua" Type="DateTime" Precision="0" />
+          <NavigationProperty Name="CTMuaHangs" Relationship="Self.FK_CTMuaHang_HoaDonMH" FromRole="HoaDonMH" ToRole="CTMuaHang" />
+        </EntityType>
+        <EntityType Name="KhachHang">
+          <Key>
+            <PropertyRef Name="makh" />
+          </Key>
+          <Property Name="makh" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="tenkh" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="sdt" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="diachi" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="tendn" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="pass" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="HoaDonBHs" Relationship="Self.FK_HoaDon_KhachHang" FromRole="KhachHang" ToRole="HoaDonBH" />
+        </EntityType>
+        <EntityType Name="Loai">
+          <Key>
+            <PropertyRef Name="maloai" />
+          </Key>
+          <Property Name="maloai" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="tenloai" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="SanPhams" Relationship="Self.FK_SanPham_Loai" FromRole="Loai" ToRole="SanPham" />
+        </EntityType>
+        <EntityType Name="SanPham">
+          <Key>
+            <PropertyRef Name="masp" />
+          </Key>
+          <Property Name="masp" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="tensp" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="tonkho" Type="Int32" Nullable="false" />
+          <Property Name="gia" Type="Int64" Nullable="false" />
+          <Property Name="maloai" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="anh" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="CTBanHangs" Relationship="Self.FK_CTHD_SanPham" FromRole="SanPham" ToRole="CTBanHang" />
+          <NavigationProperty Name="CTMuaHangs" Relationship="Self.FK_CTMuaHang_SanPham" FromRole="SanPham" ToRole="CTMuaHang" />
+          <NavigationProperty Name="Loai" Relationship="Self.FK_SanPham_Loai" FromRole="SanPham" ToRole="Loai" />
+        </EntityType>
+        <EntityType Name="sysdiagram">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <Association Name="FK_CTHD_HoaDon">
+          <End Role="HoaDonBH" Type="Self.HoaDonBH" Multiplicity="1" />
+          <End Role="CTBanHang" Type="Self.CTBanHang" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="HoaDonBH">
+              <PropertyRef Name="mahd" />
+            </Principal>
+            <Dependent Role="CTBanHang">
+              <PropertyRef Name="mahd" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CTHD_SanPham">
+          <End Role="SanPham" Type="Self.SanPham" Multiplicity="1" />
+          <End Role="CTBanHang" Type="Self.CTBanHang" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SanPham">
+              <PropertyRef Name="masp" />
+            </Principal>
+            <Dependent Role="CTBanHang">
+              <PropertyRef Name="masp" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CTMuaHang_HoaDonMH">
+          <End Role="HoaDonMH" Type="Self.HoaDonMH" Multiplicity="1" />
+          <End Role="CTMuaHang" Type="Self.CTMuaHang" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="HoaDonMH">
+              <PropertyRef Name="mahd" />
+            </Principal>
+            <Dependent Role="CTMuaHang">
+              <PropertyRef Name="mahd" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CTMuaHang_SanPham">
+          <End Role="SanPham" Type="Self.SanPham" Multiplicity="1" />
+          <End Role="CTMuaHang" Type="Self.CTMuaHang" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SanPham">
+              <PropertyRef Name="masp" />
+            </Principal>
+            <Dependent Role="CTMuaHang">
+              <PropertyRef Name="masp" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_HoaDon_KhachHang">
+          <End Role="KhachHang" Type="Self.KhachHang" Multiplicity="1" />
+          <End Role="HoaDonBH" Type="Self.HoaDonBH" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="KhachHang">
+              <PropertyRef Name="makh" />
+            </Principal>
+            <Dependent Role="HoaDonBH">
+              <PropertyRef Name="makh" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SanPham_Loai">
+          <End Role="Loai" Type="Self.Loai" Multiplicity="1" />
+          <End Role="SanPham" Type="Self.SanPham" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Loai">
+              <PropertyRef Name="maloai" />
+            </Principal>
+            <Dependent Role="SanPham">
+              <PropertyRef Name="maloai" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="QLAQEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="C_Admin" EntityType="Self.C_Admin" />
+          <EntitySet Name="CTBanHangs" EntityType="Self.CTBanHang" />
+          <EntitySet Name="CTMuaHangs" EntityType="Self.CTMuaHang" />
+          <EntitySet Name="HoaDonBHs" EntityType="Self.HoaDonBH" />
+          <EntitySet Name="HoaDonMHs" EntityType="Self.HoaDonMH" />
+          <EntitySet Name="KhachHangs" EntityType="Self.KhachHang" />
+          <EntitySet Name="Loais" EntityType="Self.Loai" />
+          <EntitySet Name="SanPhams" EntityType="Self.SanPham" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagram" />
+          <AssociationSet Name="FK_CTHD_HoaDon" Association="Self.FK_CTHD_HoaDon">
+            <End Role="HoaDonBH" EntitySet="HoaDonBHs" />
+            <End Role="CTBanHang" EntitySet="CTBanHangs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CTHD_SanPham" Association="Self.FK_CTHD_SanPham">
+            <End Role="SanPham" EntitySet="SanPhams" />
+            <End Role="CTBanHang" EntitySet="CTBanHangs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CTMuaHang_HoaDonMH" Association="Self.FK_CTMuaHang_HoaDonMH">
+            <End Role="HoaDonMH" EntitySet="HoaDonMHs" />
+            <End Role="CTMuaHang" EntitySet="CTMuaHangs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CTMuaHang_SanPham" Association="Self.FK_CTMuaHang_SanPham">
+            <End Role="SanPham" EntitySet="SanPhams" />
+            <End Role="CTMuaHang" EntitySet="CTMuaHangs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_HoaDon_KhachHang" Association="Self.FK_HoaDon_KhachHang">
+            <End Role="KhachHang" EntitySet="KhachHangs" />
+            <End Role="HoaDonBH" EntitySet="HoaDonBHs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SanPham_Loai" Association="Self.FK_SanPham_Loai">
+            <End Role="Loai" EntitySet="Loais" />
+            <End Role="SanPham" EntitySet="SanPhams" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="QLAQModelStoreContainer" CdmEntityContainer="QLAQEntities">
+          <EntitySetMapping Name="C_Admin">
+            <EntityTypeMapping TypeName="QLAQModel.C_Admin">
+              <MappingFragment StoreEntitySet="_Admin">
+                <ScalarProperty Name="tendn" ColumnName="tendn" />
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="pass" ColumnName="pass" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CTBanHangs">
+            <EntityTypeMapping TypeName="QLAQModel.CTBanHang">
+              <MappingFragment StoreEntitySet="CTBanHang">
+                <ScalarProperty Name="mactbh" ColumnName="mactbh" />
+                <ScalarProperty Name="masp" ColumnName="masp" />
+                <ScalarProperty Name="mahd" ColumnName="mahd" />
+                <ScalarProperty Name="soluong" ColumnName="soluong" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CTMuaHangs">
+            <EntityTypeMapping TypeName="QLAQModel.CTMuaHang">
+              <MappingFragment StoreEntitySet="CTMuaHang">
+                <ScalarProperty Name="mactmh" ColumnName="mactmh" />
+                <ScalarProperty Name="masp" ColumnName="masp" />
+                <ScalarProperty Name="mahd" ColumnName="mahd" />
+                <ScalarProperty Name="gia" ColumnName="gia" />
+                <ScalarProperty Name="soluong" ColumnName="soluong" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="HoaDonBHs">
+            <EntityTypeMapping TypeName="QLAQModel.HoaDonBH">
+              <MappingFragment StoreEntitySet="HoaDonBH">
+                <ScalarProperty Name="mahd" ColumnName="mahd" />
+                <ScalarProperty Name="makh" ColumnName="makh" />
+                <ScalarProperty Name="ngaymua" ColumnName="ngaymua" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="HoaDonMHs">
+            <EntityTypeMapping TypeName="QLAQModel.HoaDonMH">
+              <MappingFragment StoreEntitySet="HoaDonMH">
+                <ScalarProperty Name="mahd" ColumnName="mahd" />
+                <ScalarProperty Name="ngaymua" ColumnName="ngaymua" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="KhachHangs">
+            <EntityTypeMapping TypeName="QLAQModel.KhachHang">
+              <MappingFragment StoreEntitySet="KhachHang">
+                <ScalarProperty Name="makh" ColumnName="makh" />
+                <ScalarProperty Name="tenkh" ColumnName="tenkh" />
+                <ScalarProperty Name="sdt" ColumnName="sdt" />
+                <ScalarProperty Name="diachi" ColumnName="diachi" />
+                <ScalarProperty Name="email" ColumnName="email" />
+                <ScalarProperty Name="tendn" ColumnName="tendn" />
+                <ScalarProperty Name="pass" ColumnName="pass" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Loais">
+            <EntityTypeMapping TypeName="QLAQModel.Loai">
+              <MappingFragment StoreEntitySet="Loai">
+                <ScalarProperty Name="maloai" ColumnName="maloai" />
+                <ScalarProperty Name="tenloai" ColumnName="tenloai" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SanPhams">
+            <EntityTypeMapping TypeName="QLAQModel.SanPham">
+              <MappingFragment StoreEntitySet="SanPham">
+                <ScalarProperty Name="masp" ColumnName="masp" />
+                <ScalarProperty Name="tensp" ColumnName="tensp" />
+                <ScalarProperty Name="tonkho" ColumnName="tonkho" />
+                <ScalarProperty Name="gia" ColumnName="gia" />
+                <ScalarProperty Name="maloai" ColumnName="maloai" />
+                <ScalarProperty Name="anh" ColumnName="anh" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="QLAQModel.sysdiagram">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="definition" ColumnName="definition" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
