@@ -50,9 +50,7 @@
     <Property Name="tenkh" Type="nvarchar" MaxLength="50" Nullable="false" />
     <Property Name="sdt" Type="nvarchar" MaxLength="50" Nullable="false" />
     <Property Name="diachi" Type="nvarchar" MaxLength="50" />
-    <Property Name="email" Type="nvarchar" MaxLength="50" Nullable="false" />
-    <Property Name="tendn" Type="nvarchar" MaxLength="50" />
-    <Property Name="pass" Type="nvarchar" MaxLength="50" />
+    <Property Name="email" Type="nvarchar" MaxLength="50" />
   </EntityType>
   <EntityType Name="Loai">
     <Key>
@@ -60,6 +58,17 @@
     </Key>
     <Property Name="maloai" Type="nvarchar" MaxLength="50" Nullable="false" />
     <Property Name="tenloai" Type="nvarchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="NhanVien">
+    <Key>
+      <PropertyRef Name="manv" />
+    </Key>
+    <Property Name="manv" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="tennv" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="sdt" Type="nvarchar" MaxLength="50" />
+    <Property Name="diachi" Type="nvarchar" MaxLength="50" />
+    <Property Name="tendn" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="pass" Type="nvarchar" MaxLength="50" Nullable="false" />
   </EntityType>
   <EntityType Name="SanPham">
     <Key>
@@ -162,6 +171,7 @@
     <EntitySet Name="HoaDonMH" EntityType="Self.HoaDonMH" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="KhachHang" EntityType="Self.KhachHang" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Loai" EntityType="Self.Loai" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="NhanVien" EntityType="Self.NhanVien" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="SanPham" EntityType="Self.SanPham" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
     <AssociationSet Name="FK_CTHD_HoaDon" Association="Self.FK_CTHD_HoaDon">

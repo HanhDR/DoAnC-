@@ -18,7 +18,9 @@ C:\Users\USER\source\repos\QuanLyAoQuan\QuanLyAoQuan\obj\Debug\QuanLyAoQuan.FrmA
 C:\Users\USER\source\repos\QuanLyAoQuan\QuanLyAoQuan\obj\Debug\QuanLyAoQuan.FrmLoai.resources
 C:\Users\USER\source\repos\QuanLyAoQuan\QuanLyAoQuan\obj\Debug\QuanLyAoQuan.FrmDanhSachSanPham.resources
 C:\Users\USER\source\repos\QuanLyAoQuan\QuanLyAoQuan\obj\Debug\QuanLyAoQuan.FrmKhachHang.resources
-C:\Users\USER\source\repos\QuanLyAoQuan\QuanLyAoQuan\obj\Debug\QuanLyAoQuan.FrmHome.resources
 C:\Users\USER\source\repos\QuanLyAoQuan\QuanLyAoQuan\obj\Debug\QuanLyAoQuan.FrmThongKe.resources
 C:\Users\USER\source\repos\QuanLyAoQuan\QuanLyAoQuan\obj\Debug\QuanLyAoQuan.FrmUser.resources
 C:\Users\USER\source\repos\QuanLyAoQuan\QuanLyAoQuan\obj\Debug\QuanLyAoQuan.FrmHoaDonBH.resources
+C:\Users\USER\source\repos\QuanLyAoQuan\QuanLyAoQuan\obj\Debug\QuanLyAoQuan.FrmBanHang.resources
+C:\Users\USER\source\repos\QuanLyAoQuan\QuanLyAoQuan\obj\Debug\QuanLyAoQuan.FrmHome.resources
+C:\Users\USER\source\repos\QuanLyAoQuan\QuanLyAoQuan\obj\Debug\QuanLyAoQuan.FrmNVDN.resources

@@ -33,13 +33,14 @@ namespace QuanLyAoQuan
             da.Fill(dt);
             dataGridView1.DataSource = dt;
         }
-        private void sum()
+      public void sum()
         {
-            string sql = "select Sum(ThanhTien) as TongTien  from XacThucChiTiet";
-            SqlDataAdapter da = new SqlDataAdapter(sql, con);
-            DataTable dt = new DataTable();
-            da.Fill(dt);
-            dataGridView2.DataSource = dt;
+            long tong = 0;
+            for (int i = 0; i < dataGridView1.Rows.Count - 1; i++)
+            {
+                tong += long.Parse(dataGridView1[5, 0].Value.ToString());
+            }
+            txttong.Text = tong.ToString();
         }
         private void ketnoicsdl()
         {
@@ -59,6 +60,43 @@ namespace QuanLyAoQuan
         {
             ketnoicsdl();
             loaddulieu();
+         
+        }
+
+        private void btnthongke_Click(object sender, EventArgs e)
+        {
+            if (txtnam.Text != "0" && txtthang.Text != "0" && txtngay.Text != "0")
+            {
+                string sql = "select * from XacThucChiTiet\r\nwhere Day(ngaymua) = "
+                    + int.Parse(txtngay.Text) + "and MONTH(ngaymua) = "
+                    + int.Parse(txtthang.Text) + "and Year(ngaymua) = "
+                    + int.Parse(txtnam.Text);
+
+                SqlDataAdapter da = new SqlDataAdapter(sql, con);
+                DataTable dt = new DataTable();
+                da.Fill(dt);
+                dataGridView1.DataSource = dt;
+            }
+            else if (txtthang.Text != "0" && txtnam.Text != "0")
+            {
+                string sql = "select * from XacThucChiTiet\r\nwhere MONTH(ngaymua) = "
+                    + int.Parse(txtthang.Text) + "and Year(ngaymua) = "
+                    + int.Parse(txtnam.Text);
+
+                SqlDataAdapter da = new SqlDataAdapter(sql, con);
+                DataTable dt = new DataTable();
+                da.Fill(dt);
+                dataGridView1.DataSource = dt;
+            }
+            else
+            {
+
+                string sql = "select * from XacThucChiTiet\r\nwhere  Year(ngaymua) = " + int.Parse(txtnam.Text);
+                SqlDataAdapter da = new SqlDataAdapter(sql, con);
+                DataTable dt = new DataTable();
+                da.Fill(dt);
+                dataGridView1.DataSource = dt;
+            }
             sum();
         }
     }

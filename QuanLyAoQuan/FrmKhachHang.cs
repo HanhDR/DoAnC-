@@ -84,8 +84,7 @@ namespace QuanLyAoQuan
             model.tenkh = txtht.Text;
             model.sdt = txtsdt.Text;
             model.email=txtemail.Text;
-            model.tendn = txtun.Text;
-            model.pass = txtpass.Text;
+           
             using (QLAQEntities db = new QLAQEntities())
             {
                 db.Entry(model).State = System.Data.Entity.EntityState.Deleted;

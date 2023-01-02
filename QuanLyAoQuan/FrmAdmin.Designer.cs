@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmAdmin));
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.mnuhethong = new System.Windows.Forms.ToolStripMenuItem();
             this.mnudangnhap = new System.Windows.Forms.ToolStripMenuItem();
@@ -46,6 +47,7 @@
             // 
             // menuStrip1
             // 
+            this.menuStrip1.BackColor = System.Drawing.Color.Cyan;
             this.menuStrip1.Font = new System.Drawing.Font("Segoe UI", 14F);
             this.menuStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -63,6 +65,7 @@
             // 
             // mnuhethong
             // 
+            this.mnuhethong.BackColor = System.Drawing.Color.Transparent;
             this.mnuhethong.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.mnudangnhap,
             this.mnudangxuat,
@@ -156,9 +159,12 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.LightSkyBlue;
+            this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.ClientSize = new System.Drawing.Size(1000, 562);
             this.Controls.Add(this.menuStrip1);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ForeColor = System.Drawing.Color.Black;
             this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Name = "FrmAdmin";
             this.Text = "Quản Lý ShopPoor";

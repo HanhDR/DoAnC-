@@ -34,5 +34,6 @@ namespace QuanLyAoQuan
         public virtual DbSet<Loai> Loais { get; set; }
         public virtual DbSet<SanPham> SanPhams { get; set; }
         public virtual DbSet<sysdiagram> sysdiagrams { get; set; }
+        public virtual DbSet<NhanVien> NhanViens { get; set; }
     }
 }

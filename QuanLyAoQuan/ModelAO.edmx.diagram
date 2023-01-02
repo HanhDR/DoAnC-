@@ -20,6 +20,7 @@
         <AssociationConnector Association="QLAQModel.FK_CTMuaHang_SanPham" ManuallyRouted="false" />
         <AssociationConnector Association="QLAQModel.FK_HoaDon_KhachHang" ManuallyRouted="false" />
         <AssociationConnector Association="QLAQModel.FK_SanPham_Loai" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="QLAQModel.NhanVien" Width="1.5" PointX="8.375" PointY="4.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

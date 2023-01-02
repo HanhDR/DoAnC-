@@ -56,8 +56,6 @@
           <ScalarProperty Name="sdt" ColumnName="sdt" />
           <ScalarProperty Name="diachi" ColumnName="diachi" />
           <ScalarProperty Name="email" ColumnName="email" />
-          <ScalarProperty Name="tendn" ColumnName="tendn" />
-          <ScalarProperty Name="pass" ColumnName="pass" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -89,6 +87,18 @@
           <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
           <ScalarProperty Name="version" ColumnName="version" />
           <ScalarProperty Name="definition" ColumnName="definition" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="NhanViens">
+      <EntityTypeMapping TypeName="QLAQModel.NhanVien">
+        <MappingFragment StoreEntitySet="NhanVien">
+          <ScalarProperty Name="pass" ColumnName="pass" />
+          <ScalarProperty Name="tendn" ColumnName="tendn" />
+          <ScalarProperty Name="diachi" ColumnName="diachi" />
+          <ScalarProperty Name="sdt" ColumnName="sdt" />
+          <ScalarProperty Name="tennv" ColumnName="tennv" />
+          <ScalarProperty Name="manv" ColumnName="manv" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

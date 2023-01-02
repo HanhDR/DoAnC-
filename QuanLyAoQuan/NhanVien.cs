@@ -12,21 +12,13 @@ namespace QuanLyAoQuan
     using System;
     using System.Collections.Generic;
     
-    public partial class KhachHang
+    public partial class NhanVien
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public KhachHang()
-        {
-            this.HoaDonBHs = new HashSet<HoaDonBH>();
-        }
-    
-        public long makh { get; set; }
-        public string tenkh { get; set; }
+        public long manv { get; set; }
+        public string tennv { get; set; }
         public string sdt { get; set; }
         public string diachi { get; set; }
-        public string email { get; set; }
-    
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<HoaDonBH> HoaDonBHs { get; set; }
+        public string tendn { get; set; }
+        public string pass { get; set; }
     }
 }
