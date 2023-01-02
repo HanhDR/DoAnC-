@@ -18,6 +18,11 @@ namespace QuanLyAoQuan
             InitializeComponent();
             loadDatatoGridView();
         }
+        void lock_unlock(bool kt)
+        {
+            btnadd.Enabled = kt;
+            btndelete.Enabled = btnup.Enabled = !kt;
+        }
         void loadDatatoGridView()
         {
             dataGridView1.AutoGenerateColumns = false;
@@ -35,6 +40,7 @@ namespace QuanLyAoQuan
 
         private void btncancel_Click(object sender, EventArgs e)
         {
+            MessageBox.Show("Bạn có muốn thoát", "Thông báo");
             Close();
         }
 
@@ -63,7 +69,7 @@ namespace QuanLyAoQuan
             txtemail.Text = "";
             txtmkh.Text = "";
             txtsdt.Text = "";
-            txtun.Text = "";
+            
         }
 
         private void dataGridView1_Click(object sender, EventArgs e)
@@ -74,7 +80,8 @@ namespace QuanLyAoQuan
             txtsdt.Text = dataGridView1[2, i].Value.ToString();
             txtdiachi.Text = dataGridView1[3, i].Value.ToString();
             txtemail.Text = dataGridView1[4, i].Value.ToString();
-            txtun.Text = dataGridView1[5, i].Value.ToString();
+            btnadd.Enabled = false;
+            btndelete.Enabled = btnup.Enabled = true;
 
         }
 
@@ -94,12 +101,55 @@ namespace QuanLyAoQuan
                 txtht.Text = "";
                 txtemail.Text = "";
                 txtdiachi.Text = "";
-                txtpass.Text = "";
-                txtun.Text = "";
-
+                btnadd.Enabled = true;
+                btndelete.Enabled = btnup.Enabled = false;
                 loadDatatoGridView();
             }
 
+        }
+
+        private void btnadd_Click(object sender, EventArgs e)
+        {
+           
+            model.tenkh = txtht.Text;
+            model.sdt = txtsdt.Text;
+            model.email = txtemail.Text;
+            model.diachi = txtdiachi.Text;
+            using (QLAQEntities db = new QLAQEntities())
+            {
+               db.KhachHangs.Add(model);
+                db.SaveChanges();
+                MessageBox.Show("Add thành công", "Thông báo");
+                txtmkh.Text = "";
+                txtht.Text = "";
+                txtemail.Text = "";
+                txtdiachi.Text = "";
+                loadDatatoGridView();
+
+            }
+        }
+
+        private void btnup_Click(object sender, EventArgs e)
+        {
+
+            model.makh = long.Parse(txtmkh.Text);
+            model.tenkh = txtht.Text;
+            model.sdt = txtsdt.Text;
+            model.email = txtemail.Text;
+            model.diachi = txtdiachi.Text;
+            using (QLAQEntities db = new QLAQEntities())
+            {
+                db.Entry(model).State = System.Data.Entity.EntityState.Modified;
+                db.SaveChanges();
+                MessageBox.Show("Update thành công", "Thông báo");
+                txtmkh.Text = "";
+                txtht.Text = "";
+                txtemail.Text = "";
+                txtdiachi.Text = "";
+                btnadd.Enabled = true;
+                btndelete.Enabled = btnup.Enabled = false;
+                loadDatatoGridView();
+            }
         }
     }
 }

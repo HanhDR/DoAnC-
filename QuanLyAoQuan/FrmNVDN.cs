@@ -43,5 +43,37 @@ namespace QuanLyAoQuan
         {
             Close();
         }
+
+        private void btnlogin_Click_1(object sender, EventArgs e)
+        {
+            using (QLAQEntities db = new QLAQEntities())
+            {
+                string s = "select * from NhanVien where convert(varchar(100),DecryptByPassPhrase('aaa',pass))='" +
+                    txtpassword.Text + "'and tendn='" + txtusername.Text + "'";
+                var list = db.NhanViens.SqlQuery(s).ToList();
+                if (list.Count > 0)
+                {
+                    MessageBox.Show("Dăng Nhập Thành Công!", "Thông Báo");
+                    Close();
+                    FrmBanHang f = new FrmBanHang();
+                    f.Show();
+
+                }
+                else
+                {
+                    MessageBox.Show("Username or Password sai!", "Thông Báo");
+                }
+            }
+        }
+
+        private void btncancel_Click_1(object sender, EventArgs e)
+        {
+            Close();
+        }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

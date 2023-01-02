@@ -21,6 +21,7 @@ namespace QuanLyAoQuan
         {
             InitializeComponent();
             loadDatatoGridViewsp();
+            loadcmbox();
         }
         
         private void loaddulieu()
@@ -31,6 +32,19 @@ namespace QuanLyAoQuan
             da.Fill(dt);
             dataGridView1.DataSource = dt;
         }
+        public void loadcmbox()
+        {
+            using (QLAQEntities db = new QLAQEntities())
+            {
+                var loai = db.KhachHangs.ToList<KhachHang>();
+                foreach (var item in loai)
+                {
+                    cmbmakh.Items.Add(item.makh);
+                    cmbtenkh.Items.Add(item.tenkh);
+
+                }
+            }
+        }
 
         private void themsanpham()
         {
@@ -40,6 +54,15 @@ namespace QuanLyAoQuan
             da.Fill(dt);
 
         }
+        private void themkh()
+        {
+            string sql = "insert into KhachHang(tenkh,sdt) values("+"'"+txttkh.Text+ "'," +"'"+ txtsdt.Text +"'"+")";
+            SqlDataAdapter da = new SqlDataAdapter(sql, con);
+            DataTable dt = new DataTable();
+            da.Fill(dt);
+
+        }
+
         private void loadsp()
         {
             string sql = "select * from LSMuaHang where mahd=" + txtmhd.Text + "";
@@ -99,6 +122,9 @@ namespace QuanLyAoQuan
 
         private void btnthemkh_Click(object sender, EventArgs e)
         {
+            ketnoicsdl();
+            themkh();
+            MessageBox.Show("Thêm khách hàng thành công", "Thông Báo");
 
         }
 
@@ -106,15 +132,16 @@ namespace QuanLyAoQuan
         {
 
             int i = datasanpham.CurrentRow.Index;
-            txtsp.Text = datasanpham[1, i].Value.ToString();
-            txtmsp.Text = datasanpham[0, i].Value.ToString();
+            txtsp.Text = datasanpham[0, i].Value.ToString();
+            txtmsp.Text = datasanpham[1, i].Value.ToString();
+            pictureBox1.Image = Image.FromFile(datasanpham[3,0].Value.ToString());
         }
 
         private void btnthemsp_Click(object sender, EventArgs e)
         {
-            if (txtmkh.Text != null)
+            if (cmbmakh.Text != null)
             {
-                hd.makh = long.Parse(txtmkh.Text);
+                hd.makh = long.Parse(cmbmakh.SelectedItem.ToString());
                 hd.ngaymua = dtngaymua.Value;
 
                 using (QLAQEntities db = new QLAQEntities())
@@ -141,7 +168,7 @@ namespace QuanLyAoQuan
 
         private void btnmhd_Click(object sender, EventArgs e)
         {
-            if (txtmkh.Text != null)
+            if (cmbmakh.Text != null)
             {
                 ketnoicsdl();
                 loaddulieu();
@@ -160,6 +187,7 @@ namespace QuanLyAoQuan
 
         private void btncan_Click(object sender, EventArgs e)
         {
+            MessageBox.Show("Bạn có muốn thoát", "Thông Báo");
             Close();
         }
 
@@ -169,7 +197,7 @@ namespace QuanLyAoQuan
             {
                 using (QLAQEntities db = new QLAQEntities())
                 {
-                    dataGridView1.DataSource = Luu.CreateDataTable<SanPham>(db.SanPhams.SqlQuery("select * from SanPham where tensp like N'%" +
+                    datasanpham.DataSource = Luu.CreateDataTable<SanPham>(db.SanPhams.SqlQuery("select * from SanPham where tensp like N'%" +
                          txttensp.Text + "%'").ToList());
                     txttensp.Text = "";
                 }
@@ -188,6 +216,24 @@ namespace QuanLyAoQuan
         private void btnthanhtoan_Click(object sender, EventArgs e)
         {
             MessageBox.Show("Thanh Toán Thành Công", "Thông Báo");
+        }
+
+        private void btnrs_Click(object sender, EventArgs e)
+        {
+            int i = datasanpham.CurrentRow.Index;
+            txtsp.Text = "";
+            txtmsp.Text = "";
+            txtsl.Text = "";
+            txtsdt.Text = "";
+            txttkh.Text = "";
+           
+        }
+
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+            DateTime start = DateTime.Now;
+            DateTime passTime = DateTime.Parse((start).ToString());
+            labtime.Text = passTime.ToLongTimeString().ToString();
         }
     }
 }

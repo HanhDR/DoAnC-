@@ -21,7 +21,7 @@ namespace QuanLyAoQuan
         void lock_unlock(bool kt)
         {
             mnudangnhap.Enabled = mnuthoat.Enabled = kt;
-            mnudangxuat.Enabled = mnutracuu.Enabled = mnudanhmuc.Enabled = mnubaocao.Enabled = mnuthongke.Enabled=!kt;
+            mnudangxuat.Enabled = mnutracuu.Enabled = mnudanhmuc.Enabled = mnubanhang.Enabled = mnuthongke.Enabled=!kt;
         }
 
 
@@ -58,6 +58,7 @@ namespace QuanLyAoQuan
         {
             FrmKhachHang f = new FrmKhachHang();
             f.Show();
+            lock_unlock(!Luu.KT);
         }
 
         private void mnudanhmuc_Click(object sender, EventArgs e)
@@ -73,9 +74,13 @@ namespace QuanLyAoQuan
 
         private void mnudangxuat_Click(object sender, EventArgs e)
         {
+
+
             this.Close();
-            FrmAdmin f =new FrmAdmin();
+            FrmAdmin f = new FrmAdmin();
             f.Show();
+       
+
         }
 
         private void mnuthoat_Click(object sender, EventArgs e)
@@ -97,6 +102,12 @@ namespace QuanLyAoQuan
         private void mnuthongke_Click(object sender, EventArgs e)
         {
             FrmThongKe f = new FrmThongKe();
+            f.Show();
+        }
+
+        private void mnubaocao_Click(object sender, EventArgs e)
+        {
+            FrmBanHang f = new FrmBanHang();
             f.Show();
         }
     }

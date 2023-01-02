@@ -54,12 +54,46 @@ namespace QuanLyAoQuan
                 }
             }
         }
-        private void label1_Click(object sender, EventArgs e)
+      
+
+     
+
+     
+
+     
+        private void FrmDanhSachSanPham_Load(object sender, EventArgs e)
         {
 
         }
 
-        private void button1_Click(object sender, EventArgs e)
+      
+
+   
+     
+
+       
+
+     
+       
+
+        private void btnsearch_Click_1(object sender, EventArgs e)
+        {
+            if (txttensp.Text != "")
+            {
+                using (QLAQEntities db = new QLAQEntities())
+                {
+                    dataGridView1.DataSource = Luu.CreateDataTable<SanPham>(db.SanPhams.SqlQuery("select * from SanPham where tensp like N'%" +
+                         txttensp.Text + "%'").ToList());
+                    txttensp.Text = "";
+                }
+            }
+            else
+            {
+                loadDatatoGridView();
+            }
+        }
+
+        private void button1_Click_1(object sender, EventArgs e)
         {
             OpenFileDialog dlgOpen = new OpenFileDialog();
             dlgOpen.Filter = "Bitmap(*.bmp)|*.bmp|JPEG(*.jpg)|*.jpg|GIF(*.gif)|*.gif|All files(*.*)|*.*";
@@ -70,15 +104,9 @@ namespace QuanLyAoQuan
                 pictureBox1.Image = Image.FromFile(dlgOpen.FileName);
                 txtanh.Text = dlgOpen.FileName;
             }
-
         }
 
-        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void btnadd_Click(object sender, EventArgs e)
+        private void btnadd_Click_1(object sender, EventArgs e)
         {
             model.tensp = txttensp.Text;
             model.maloai = cmbml.SelectedItem.ToString();
@@ -95,31 +123,13 @@ namespace QuanLyAoQuan
                 txttonkho.Text = "";
                 txtanh.Text = "";
                 txtgia.Text = "";
-                pictureBox1.Image =null;
+              
+                pictureBox1.Image = null;
                 loadDatatoGridView();
             }
         }
 
-        private void FrmDanhSachSanPham_Load(object sender, EventArgs e)
-        {
-
-        }
-
-        private void dataGridView1_Click(object sender, EventArgs e)
-        {
-            int i = dataGridView1.CurrentRow.Index;
-            txtmasp.Text = dataGridView1[1, i].Value.ToString();
-            txttensp.Text = dataGridView1[2, i].Value.ToString();
-            txttonkho.Text = dataGridView1[3, i].Value.ToString();
-            txtgia.Text= dataGridView1[4, i].Value.ToString();
-            cmbml.Text= dataGridView1[5, i].Value.ToString();
-            txtanh.Text= dataGridView1[6, i].Value.ToString();           
-            pictureBox1.Image = Image.FromFile(txtanh.Text);
-            btndelete.Enabled = btnup.Enabled = true;
-            btnadd.Enabled = false;
-        }
-
-        private void btnup_Click(object sender, EventArgs e)
+        private void btnup_Click_1(object sender, EventArgs e)
         {
             model.masp = long.Parse(txtmasp.Text);
             model.tensp = txttensp.Text;
@@ -137,14 +147,15 @@ namespace QuanLyAoQuan
                 txttonkho.Text = "";
                 txtanh.Text = "";
                 txtgia.Text = "";
+                txtmasp.Text = "";
                 pictureBox1.Image = null;
-                btnadd.Enabled = btncancel.Enabled =true;
+                btnadd.Enabled = btncancel.Enabled = true;
                 btndelete.Enabled = btnup.Enabled = false;
                 loadDatatoGridView();
             }
         }
 
-        private void btndelete_Click(object sender, EventArgs e)
+        private void btndelete_Click_1(object sender, EventArgs e)
         {
             model.masp = long.Parse(txtmasp.Text);
             model.tensp = txttensp.Text;
@@ -162,6 +173,7 @@ namespace QuanLyAoQuan
                 txttonkho.Text = "";
                 txtanh.Text = "";
                 txtgia.Text = "";
+                txtmasp.Text = "";
                 pictureBox1.Image = null;
                 btnadd.Enabled = btncancel.Enabled = true;
                 btndelete.Enabled = btnup.Enabled = false;
@@ -177,6 +189,7 @@ namespace QuanLyAoQuan
 
         private void btnreset_Click(object sender, EventArgs e)
         {
+            txtmasp.Text = "";
             txttensp.Text = "";
             cmbml.Text = "";
             txttonkho.Text = "";
@@ -185,26 +198,18 @@ namespace QuanLyAoQuan
             pictureBox1.Image = null;
         }
 
-        private void btnsearch_Click(object sender, EventArgs e)
+        private void dataGridView1_Click(object sender, EventArgs e)
         {
-            if (txttensp.Text != "")
-            {
-                using (QLAQEntities db = new QLAQEntities())
-                {
-                    dataGridView1.DataSource = Luu.CreateDataTable<SanPham>(db.SanPhams.SqlQuery("select * from SanPham where tensp like N'%" +
-                         txttensp.Text + "%'").ToList());
-                    txttensp.Text = "";
-                }
-            } 
-            else
-            {
-                loadDatatoGridView();
-            }
-        }
-
-        private void btnsearch_Click_1(object sender, EventArgs e)
-        {
-
+            int i = dataGridView1.CurrentRow.Index;
+            txtmasp.Text = dataGridView1[1, i].Value.ToString();
+            txttensp.Text = dataGridView1[2, i].Value.ToString();
+            txttonkho.Text = dataGridView1[3, i].Value.ToString();
+            txtgia.Text = dataGridView1[4, i].Value.ToString();
+            cmbml.Text = dataGridView1[5, i].Value.ToString();
+            txtanh.Text = dataGridView1[6, i].Value.ToString();
+            pictureBox1.Image = Image.FromFile(txtanh.Text);
+            btndelete.Enabled = btnup.Enabled = true;
+            btnadd.Enabled = false;
         }
     }
 }

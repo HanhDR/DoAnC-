@@ -112,7 +112,7 @@
             // cmbml
             // 
             this.cmbml.FormattingEnabled = true;
-            this.cmbml.Location = new System.Drawing.Point(111, 89);
+            this.cmbml.Location = new System.Drawing.Point(117, 89);
             this.cmbml.Name = "cmbml";
             this.cmbml.Size = new System.Drawing.Size(164, 24);
             this.cmbml.TabIndex = 52;
@@ -126,6 +126,7 @@
             this.button1.TabIndex = 51;
             this.button1.Text = "Open";
             this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click_1);
             // 
             // pictureBox1
             // 
@@ -166,14 +167,14 @@
             // 
             // txtgia
             // 
-            this.txtgia.Location = new System.Drawing.Point(111, 167);
+            this.txtgia.Location = new System.Drawing.Point(117, 167);
             this.txtgia.Name = "txtgia";
             this.txtgia.Size = new System.Drawing.Size(164, 22);
             this.txtgia.TabIndex = 46;
             // 
             // txttonkho
             // 
-            this.txttonkho.Location = new System.Drawing.Point(111, 128);
+            this.txttonkho.Location = new System.Drawing.Point(117, 128);
             this.txttonkho.Name = "txttonkho";
             this.txttonkho.Size = new System.Drawing.Size(164, 22);
             this.txttonkho.TabIndex = 47;
@@ -191,14 +192,14 @@
             // txtmasp
             // 
             this.txtmasp.Enabled = false;
-            this.txtmasp.Location = new System.Drawing.Point(111, 10);
+            this.txtmasp.Location = new System.Drawing.Point(117, 10);
             this.txtmasp.Name = "txtmasp";
             this.txtmasp.Size = new System.Drawing.Size(164, 22);
             this.txtmasp.TabIndex = 48;
             // 
             // txttensp
             // 
-            this.txttensp.Location = new System.Drawing.Point(111, 45);
+            this.txttensp.Location = new System.Drawing.Point(117, 46);
             this.txttensp.Name = "txttensp";
             this.txttensp.Size = new System.Drawing.Size(164, 22);
             this.txttensp.TabIndex = 49;
@@ -247,6 +248,7 @@
             this.btnreset.TabIndex = 43;
             this.btnreset.Text = "Reset";
             this.btnreset.UseVisualStyleBackColor = false;
+            this.btnreset.Click += new System.EventHandler(this.btnreset_Click);
             // 
             // btncancel
             // 
@@ -258,6 +260,7 @@
             this.btncancel.TabIndex = 39;
             this.btncancel.Text = "Cancel";
             this.btncancel.UseVisualStyleBackColor = false;
+            this.btncancel.Click += new System.EventHandler(this.btncancel_Click);
             // 
             // btndelete
             // 
@@ -269,6 +272,7 @@
             this.btndelete.TabIndex = 40;
             this.btndelete.Text = "Delete";
             this.btndelete.UseVisualStyleBackColor = false;
+            this.btndelete.Click += new System.EventHandler(this.btndelete_Click_1);
             // 
             // btnup
             // 
@@ -280,6 +284,7 @@
             this.btnup.TabIndex = 41;
             this.btnup.Text = "Update";
             this.btnup.UseVisualStyleBackColor = false;
+            this.btnup.Click += new System.EventHandler(this.btnup_Click_1);
             // 
             // btnadd
             // 
@@ -291,6 +296,7 @@
             this.btnadd.TabIndex = 42;
             this.btnadd.Text = "Add";
             this.btnadd.UseVisualStyleBackColor = false;
+            this.btnadd.Click += new System.EventHandler(this.btnadd_Click_1);
             // 
             // dataGridView1
             // 
@@ -309,6 +315,7 @@
             this.dataGridView1.RowTemplate.Height = 24;
             this.dataGridView1.Size = new System.Drawing.Size(968, 230);
             this.dataGridView1.TabIndex = 38;
+            this.dataGridView1.Click += new System.EventHandler(this.dataGridView1_Click);
             // 
             // tt
             // 
@@ -369,10 +376,10 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("Lucida Calligraphy", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(230, 18);
+            this.label5.Font = new System.Drawing.Font("Lucida Calligraphy", 19.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.Location = new System.Drawing.Point(273, 9);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(497, 52);
+            this.label5.Size = new System.Drawing.Size(426, 44);
             this.label5.TabIndex = 40;
             this.label5.Text = "Danh Sách Sản Phẩm";
             // 

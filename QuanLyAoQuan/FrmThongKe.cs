@@ -99,6 +99,11 @@ namespace QuanLyAoQuan
             }
             sum();
         }
+
+        private void btnquaylai_Click(object sender, EventArgs e)
+        {
+            Close();
+        }
     }
 
 }

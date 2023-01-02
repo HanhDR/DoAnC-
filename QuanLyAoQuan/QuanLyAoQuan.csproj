@@ -139,12 +139,6 @@
     <Compile Include="FrmHoaDonBH.Designer.cs">
       <DependentUpon>FrmHoaDonBH.cs</DependentUpon>
     </Compile>
-    <Compile Include="FrmUser.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="FrmUser.Designer.cs">
-      <DependentUpon>FrmUser.cs</DependentUpon>
-    </Compile>
     <Compile Include="Fuctions.cs" />
     <Compile Include="HoaDonBH.cs">
       <DependentUpon>ModelAO.tt</DependentUpon>
@@ -213,9 +207,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FrmHoaDonBH.resx">
       <DependentUpon>FrmHoaDonBH.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="FrmUser.resx">
-      <DependentUpon>FrmUser.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

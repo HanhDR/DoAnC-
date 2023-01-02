@@ -19,6 +19,11 @@ namespace QuanLyAoQuan
             InitializeComponent();
             loadDatatoGridView();
         }
+        void lock_unlock(bool kt)
+        {
+           btnadd.Enabled = kt;
+           btndelete.Enabled = btnup.Enabled=!kt;
+        }
         void loadDatatoGridView()
         {
             dataGridView1.AutoGenerateColumns = false;
@@ -98,6 +103,9 @@ namespace QuanLyAoQuan
         {
             txtml.Text = "";
             txttl.Text = "";
+            btnup.Enabled = btndelete.Enabled= false;
+            btnadd.Enabled= true;
+            
         }
 
         private void btnsearch_Click(object sender, EventArgs e)

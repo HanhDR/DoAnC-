@@ -47,6 +47,7 @@
             this.gia = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ThanhTien = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.label5 = new System.Windows.Forms.Label();
+            this.btnquaylai = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
@@ -55,6 +56,7 @@
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.LightBlue;
+            this.panel1.Controls.Add(this.btnquaylai);
             this.panel1.Controls.Add(this.label4);
             this.panel1.Location = new System.Drawing.Point(-8, 1);
             this.panel1.Name = "panel1";
@@ -243,6 +245,18 @@
             this.label5.TabIndex = 14;
             this.label5.Text = "Tổng Tiền:";
             // 
+            // btnquaylai
+            // 
+            this.btnquaylai.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.btnquaylai.Font = new System.Drawing.Font("Lucida Calligraphy", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnquaylai.Location = new System.Drawing.Point(11, 1);
+            this.btnquaylai.Name = "btnquaylai";
+            this.btnquaylai.Size = new System.Drawing.Size(137, 38);
+            this.btnquaylai.TabIndex = 1;
+            this.btnquaylai.Text = "Quay Lại";
+            this.btnquaylai.UseVisualStyleBackColor = false;
+            this.btnquaylai.Click += new System.EventHandler(this.btnquaylai_Click);
+            // 
             // FrmThongKe
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -283,5 +297,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn soluong;
         private System.Windows.Forms.DataGridViewTextBoxColumn gia;
         private System.Windows.Forms.DataGridViewTextBoxColumn ThanhTien;
+        private System.Windows.Forms.Button btnquaylai;
     }
 }

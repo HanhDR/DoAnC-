@@ -131,7 +131,7 @@
             this.btncancel.Font = new System.Drawing.Font("Lucida Calligraphy", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btncancel.Location = new System.Drawing.Point(676, 313);
             this.btncancel.Name = "btncancel";
-            this.btncancel.Size = new System.Drawing.Size(109, 34);
+            this.btncancel.Size = new System.Drawing.Size(123, 34);
             this.btncancel.TabIndex = 29;
             this.btncancel.Text = "Cancel";
             this.btncancel.UseVisualStyleBackColor = false;
@@ -143,7 +143,7 @@
             this.btndelete.Font = new System.Drawing.Font("Lucida Calligraphy", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btndelete.Location = new System.Drawing.Point(374, 313);
             this.btndelete.Name = "btndelete";
-            this.btndelete.Size = new System.Drawing.Size(109, 34);
+            this.btndelete.Size = new System.Drawing.Size(123, 34);
             this.btndelete.TabIndex = 30;
             this.btndelete.Text = "Delete";
             this.btndelete.UseVisualStyleBackColor = false;
@@ -155,7 +155,7 @@
             this.btnup.Font = new System.Drawing.Font("Lucida Calligraphy", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnup.Location = new System.Drawing.Point(225, 313);
             this.btnup.Name = "btnup";
-            this.btnup.Size = new System.Drawing.Size(97, 34);
+            this.btnup.Size = new System.Drawing.Size(105, 34);
             this.btnup.TabIndex = 31;
             this.btnup.Text = "Update";
             this.btnup.UseVisualStyleBackColor = false;
@@ -165,9 +165,9 @@
             // 
             this.btnadd.BackColor = System.Drawing.SystemColors.HighlightText;
             this.btnadd.Font = new System.Drawing.Font("Lucida Calligraphy", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnadd.Location = new System.Drawing.Point(92, 313);
+            this.btnadd.Location = new System.Drawing.Point(71, 313);
             this.btnadd.Name = "btnadd";
-            this.btnadd.Size = new System.Drawing.Size(97, 34);
+            this.btnadd.Size = new System.Drawing.Size(118, 34);
             this.btnadd.TabIndex = 32;
             this.btnadd.Text = "Add";
             this.btnadd.UseVisualStyleBackColor = false;
@@ -191,7 +191,7 @@
             this.btnreset.Font = new System.Drawing.Font("Lucida Calligraphy", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnreset.Location = new System.Drawing.Point(534, 310);
             this.btnreset.Name = "btnreset";
-            this.btnreset.Size = new System.Drawing.Size(87, 37);
+            this.btnreset.Size = new System.Drawing.Size(102, 37);
             this.btnreset.TabIndex = 46;
             this.btnreset.Text = "Reset";
             this.btnreset.UseVisualStyleBackColor = false;

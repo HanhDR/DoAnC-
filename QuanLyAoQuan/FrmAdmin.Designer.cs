@@ -40,7 +40,7 @@
             this.mnukhachhang = new System.Windows.Forms.ToolStripMenuItem();
             this.mnutracuu = new System.Windows.Forms.ToolStripMenuItem();
             this.hóaĐơnBánHàngToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.mnubaocao = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnubanhang = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuthongke = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -54,7 +54,7 @@
             this.mnuhethong,
             this.mnudanhmuc,
             this.mnutracuu,
-            this.mnubaocao,
+            this.mnubanhang,
             this.mnuthongke});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
@@ -142,11 +142,12 @@
             this.hóaĐơnBánHàngToolStripMenuItem.Text = "Hóa Đơn Bán Hàng";
             this.hóaĐơnBánHàngToolStripMenuItem.Click += new System.EventHandler(this.hóaĐơnBánHàngToolStripMenuItem_Click);
             // 
-            // mnubaocao
+            // mnubanhang
             // 
-            this.mnubaocao.Name = "mnubaocao";
-            this.mnubaocao.Size = new System.Drawing.Size(116, 36);
-            this.mnubaocao.Text = "Báo Cáo";
+            this.mnubanhang.Name = "mnubanhang";
+            this.mnubanhang.Size = new System.Drawing.Size(132, 36);
+            this.mnubanhang.Text = "Bán Hàng";
+            this.mnubanhang.Click += new System.EventHandler(this.mnubaocao_Click);
             // 
             // mnuthongke
             // 
@@ -188,7 +189,7 @@
         private System.Windows.Forms.ToolStripMenuItem mnudanhmucloai;
         private System.Windows.Forms.ToolStripMenuItem mnudanhmucsp;
         private System.Windows.Forms.ToolStripMenuItem mnutracuu;
-        private System.Windows.Forms.ToolStripMenuItem mnubaocao;
+        private System.Windows.Forms.ToolStripMenuItem mnubanhang;
         private System.Windows.Forms.ToolStripMenuItem mnuthongke;
         private System.Windows.Forms.ToolStripMenuItem mnukhachhang;
         private System.Windows.Forms.ToolStripMenuItem hóaĐơnBánHàngToolStripMenuItem;
